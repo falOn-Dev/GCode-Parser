@@ -14,12 +14,17 @@ grammar gcode_grammar;
     FEEDRATE_ARG: ' '? 'F' NUMBER;
 
 
+    // Whitespace Rules
     NEW_LINE: '\r'? '\n';
-
     COMMENT: '\n;' ~[\r\n]* -> skip;
 
+    /*
+     * Program Entry Point
+     * Programs are comprised of single commands followed by newlines
+     */
     program: command (NEW_LINE command)*;
 
+    // Command Rules
     command: simple_motion_command;
 
     // Motion Control
