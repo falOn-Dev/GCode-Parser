@@ -1,2 +1,3 @@
-# GCode-Parser
- ANTLR Project to parse through GCode and print out a line-by-line explanation of its functionality
+# GIE-Decode
+
+GIE-Decode (**G-Code Interpreter** and **Elaborator**) is a program meant for processing G-Code into a more human readable format 
