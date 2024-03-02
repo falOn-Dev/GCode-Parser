@@ -1,7 +1,8 @@
-from GCodeVisitor import GCodeVisitor
-from generated_code.gcode_grammarLexer import gcode_grammarLexer
-from generated_code.gcode_grammarParser import gcode_grammarParser
 from antlr4 import InputStream, CommonTokenStream
+from GCodeVisitor import GCodeVisitor
+from generated_code.gcode_grammarParser import gcode_grammarParser
+from generated_code.gcode_grammarLexer import gcode_grammarLexer
+
 
 def main():
 

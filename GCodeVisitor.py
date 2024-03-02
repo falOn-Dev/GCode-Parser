@@ -4,6 +4,9 @@ import processing as proc
 
 
 class GCodeVisitor(gcode_grammarVisitor):
+
+    array = []
+
     def visitProgram(self, ctx: gcode_grammarParser.ProgramContext):
         for command in ctx.command():
             self.visitCommand(command)
