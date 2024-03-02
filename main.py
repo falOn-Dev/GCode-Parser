@@ -1,16 +1,20 @@
-# This is a sample Python script.
+from GCodeVisitor import GCodeVisitor
+from generated_code.gcode_grammarLexer import gcode_grammarLexer
+from generated_code.gcode_grammarParser import gcode_grammarParser
+from antlr4 import InputStream, CommonTokenStream
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def main():
+    input_data = "G0 X0 Y0 Z0 E50 F50"
+    input_stream = InputStream(input_data)
+    lexer = gcode_grammarLexer(input_stream)
+    token_stream = CommonTokenStream(lexer)
+    parser = gcode_grammarParser(token_stream)
+    tree = parser.program()
+
+    visitor = GCodeVisitor()
+    visitor.visitProgram(tree)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
