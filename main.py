@@ -4,8 +4,12 @@ from generated_code.gcode_grammarParser import gcode_grammarParser
 from antlr4 import InputStream, CommonTokenStream
 
 def main():
-    input_data = "G0 X0 Y0 Z0 E50 F50\nG1 X300 F300 E300"
+
+    file = input("Enter the name of the file you'd like to decode: ")
+    with open(file, "r") as f:
+        input_data = f.read()
     input_stream = InputStream(input_data)
+
     lexer = gcode_grammarLexer(input_stream)
     token_stream = CommonTokenStream(lexer)
     parser = gcode_grammarParser(token_stream)
